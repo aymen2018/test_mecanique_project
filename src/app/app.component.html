@@ -1,0 +1,223 @@
+<mat-drawer-container class="example-container">
+
+  <!-- draw side left content -->
+
+  <mat-drawer mode="side" opened class="side">
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+        <button class="nav-link active" id="fcc_button" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
+          role="tab" aria-controls="nav-home" aria-selected="true" (click)="open_fcc_tab()">
+          FFC TYPE
+        </button>
+
+        <button class="nav-link " id="desc_button" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+          role="tab" aria-controls="nav-profile" aria-selected="false" (click)="open_desc_tab()">
+          DESCRIPTION
+        </button>
+
+        <button class="nav-link" id="matr_button" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
+          role="tab" aria-controls="nav-contact" aria-selected="false" (click)="open_matr_tab()">
+          MATERIAL</button>
+
+        <button class="nav-link" id="spec_button" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
+          role="tab" aria-controls="nav-contact" aria-selected="false" (click)="open_spec_tab()">
+          SPECIFICATION</button>
+
+      </div>
+    </nav>
+
+
+
+
+    <!--content-->
+    <div class="card m-3" *ngIf="is_tab_fcc_cliqued == true">
+      <h5 class="card-header">FFC TYPE</h5>
+      <div class="card-body">
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+
+
+            <div class="form-group col-5">
+              <label>Planta project</label>
+
+              <input type="text" formControlName="planta_project" [(ngModel)]="planta_project" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+            <div class="form-group col-5">
+              <label>Engineering N°</label>
+              <input type="text" formControlName="engineering" [(ngModel)]="engineering_num" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+            </div>
+            <div class="form-group col-5">
+              <label>Bios number</label>
+              <input type="text" formControlName="bios_number" [(ngModel)]="bio_num" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+            <div class="form-group col-5">
+              <label>Drawing Type</label>
+              <input type="text" formControlName="drawing_type" [(ngModel)]="drawing_type" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+            <div class="form-group col-5">
+              <label>Revision</label>
+              <input type="text" formControlName="revision" [(ngModel)]="revision_type" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+            <div class="form-group col-5">
+              <label>Article N°</label>
+              <input type="text" formControlName="num_article" [(ngModel)]="article_num" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+            <div class="form-group col-5">
+              <label>Purchase N°</label>
+              <input type="text" formControlName="purchase_num" [(ngModel)]="purchase_num" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+            <div class="form-group col-5">
+              <label>Description 1</label>
+              <input type="text" formControlName="first_description" [(ngModel)]="first_description"
+                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+            <div class="form-group col-5">
+              <label>Description 2</label>
+              <input type="text" formControlName="second_description" [(ngModel)]="second_description"
+                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+            <h2 style="margin-top:10px">FCC Type</h2>
+            <div class="form-group col-5">
+              <label>Model type</label>
+              <input type="text" formControlName="model_type" [(ngModel)]="model_type" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+            <div class="form-group col-5">
+              <label>Connection type</label>
+              <input type="text" formControlName="connection_type" [(ngModel)]="connection_type" disabled="true"
+                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--description content-->
+    <div class="card m-3" *ngIf="is_tab_desc_cliqued == true">
+      <h5 class="card-header">DESCRIPTION</h5>
+      <div class="card-body">
+
+        <div class="row">
+          <div class="column">
+            L
+            <input type="text" ng-model="desc_l">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Material content-->
+    <div class="card m-3" *ngIf="is_tab_matr_cliqued == true">
+      <h5 class="card-header">MATERIAL</h5>
+      <div class="card-body">
+      </div>
+    </div>
+
+    <!--Specification content-->
+    <div class="card m-3" *ngIf="is_tab_spec_cliqued == true">
+      <h5 class="card-header">SPECIFICATION</h5>
+      <div class="card-body">
+      </div>
+    </div>
+
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <h2>FCC TYPE</h2>
+    <table class="table table-bordered table-striped " style="width: 50%;">
+
+      <tbody>
+        <tr>
+          <th scope="row">Planta project</th>
+          <td>{{planta_project}}</td>
+
+        </tr>
+        <tr>
+          <th scope="row">Engineering N°</th>
+          <td>{{engineering_num}}</td>
+
+        </tr>
+        <tr>
+          <th scope="row">Bio nubmer</th>
+          <td>{{bio_num}}</td>
+
+        </tr>
+
+        <tr>
+          <th scope="row">Drawing type</th>
+          <td>{{drawing_type}}</td>
+
+        </tr>
+
+        <tr>
+          <th scope="row">Revision</th>
+          <td>{{revision_type}}</td>
+
+        </tr>
+        <tr>
+          <th scope="row">Article N°</th>
+          <td>{{article_num}}</td>
+
+        </tr>
+        <tr>
+          <th scope="row">Purchase N°</th>
+          <td>{{purchase_num}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Description 1</th>
+          <td>{{first_description}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Description 2</th>
+          <td>{{second_description}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Model type</th>
+          <td>{{model_type}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Connection type</th>
+          <td>{{connection_type}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+    
+
+    <!--Show print button-->
+    <button mat-button placeholder="print" onClick="window.print()" style="position: absolute;left: 375px;">
+      <mat-icon>print</mat-icon>
+    </button>
+
+
+
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+<!--
+  <img src="/assets/img/model.png" alt="image">
+  -->
+<!--
+-->
+<!--
+<mat-form-field appearance="fill">
+  <mat-label>Select</mat-label>
+  <mat-select>
+    <mat-option value="one">First option</mat-option>
+    <mat-option value="two">Second option</mat-option>
+  </mat-select>
+</mat-form-field>
+-->
